@@ -15,7 +15,7 @@ namespace Oraculo
         private const string RedisConnectionString = "191.232.234.20:6379";
         private static ConnectionMultiplexer connection;
 
-        private const string ChatChannel = "perguntas";
+        private const string ChatChannel = "Chamada";
         private static string oraculo_group = string.Empty;
        
 
@@ -29,10 +29,8 @@ namespace Oraculo
             var pubsub = connection.GetSubscriber();
 
             pubsub.Subscribe(ChatChannel, (channel, message) => MessageAction(message));
-
-            
-
-            pubsub.Publish(ChatChannel, $": {oraculo_group} esta participando do grupo de oraculos.");
+                        
+            //pubsub.Publish(ChatChannel, $": {oraculo_group} esta participando do grupo de oraculos.");
 
             while (true)
             {
